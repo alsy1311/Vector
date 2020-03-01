@@ -3,12 +3,6 @@
 
 int main() {
 	std::vector<int> myVector1;
-/*	myVector.push_back(1);
-	myVector.push_back(1);
-	myVector.push_back(1);
-	myVector.push_back(1);
-	myVector.push_back(1);
-	*/
 	for (int i = 0; i <= 20; i++) {
 		std::cout << "MyVector1 contains of " << i << " element " << std::endl;
 		std::cout << " Capacity is " << myVector1.capacity() << std::endl;
@@ -23,7 +17,16 @@ int main() {
 
 		myVector2.push_back(1);
 	}
-
+	std::vector<int> myVector3;
+	try {
+		for (size_t i = 0; i < std::numeric_limits<size_t>::max(); i++) {
+			myVector3.push_back(1);
+		}
+		
+	}
+	catch (std::bad_alloc& e) {
+		std::cout << e.what() << '\n';
+	}
 	system("pause");
 	return 0;
 }
